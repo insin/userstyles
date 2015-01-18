@@ -1,0 +1,180 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+/* ======================================================= Global Changes === */
+
+/*
+Styles which are applied to all pages - for tweaking shared components.
+*/
+
+@-moz-document domain("www.rllmukforum.com") {
+
+/* --------------------------------------------------------------- Header --- */
+
+/* Move user nav to the left */
+#user_navigation { float: left; }
+
+/* Move the search box into the top bar */
+#branding .main_width { position: relative; } /* Containing block-ify */
+#search #search-box { position: absolute; top: -31px; right: 0; }
+/* Hide the rest of the branding section */
+#branding { height: 0 !important; min-height: 0 !important; }
+#logo { display: none !important; }
+#search { margin: 0 !important; float: none !important; }
+
+/* Hide left-hand primary nav sections */
+#nav_home,
+#nav_app_forums,
+#nav_app_members,
+#nav_app_ccs,
+#nav_app_calendar,
+#nav_app_nexus,
+#community_app_menu li:first-child { display: none !important; }
+
+/* Move breadcrumb nav into the space we just cleared */
+#content { position: relative; } /* Containing block-ify */
+#secondary_navigation { position: absolute; left: 12px;top: -26px; }
+#secondary_navigation span[itemprop="title"] { color: #ccc; }
+#secondary_navigation a span[itemprop="title"] { color: #fff; }
+#secondary_navigation span.nav_sep { color: #aaa; }
+#secondary_navigation + br,
+#secondary_navigation + br + noscript + br { display: none; }
+
+/* ------------------------------------------------------- Forum Listings --- */
+
+/* Halve top and bottom padding of cells */
+table.ipb_table td { padding: 5px 10px !important; }
+/* Ensure columns which overrode padding continue to do so */
+table.ipb_table td.col_f_icon { padding: 5px 0 0 !important; }
+table.ipb_table td.col_c_icon { padding: 5px 5px !important; }
+
+/* Remove avatars from the last post column */
+td.col_c_post { width: 200px !important; }
+td.col_c_post .ipsUserPhotoLink { display: none; }
+td.col_c_post .last_post { margin-left: 0 !important; }
+
+/* Whitespace under forum listing */
+div.category_block + br,
+div.category_block + br + br,
+div.category_block + br + br + br { display: none; }
+
+/* ------------------------------------------------------- Topic Listings --- */
+
+/* Remove avatars from the last post column and narrow it */
+td.col_f_post { width: 150px !important; }
+td.col_f_post .ipsUserPhotoLink { display: none; }
+td.col_f_post .last_post { margin-left: 0 !important; }
+
+/* Remove badges from Reply/View count columns */
+td.col_f_views span.ipsBadge { display: none !important; }
+
+/* Let badges take their natural, shorter height */
+.ipsBadge { height: auto !important; line-height: inherit !important; }
+
+/* Stop huge primary tag from pushing topic titles out of the way. */
+a.ipsBadge { display: none !important; }
+
+/* Dim tag icon so it doesn't jump out as you scan topic listings. */
+img[src="http://www.rllmukforum.com/public/style_images/master/icon_tag.png"] { opacity: .3; }
+/* Restore original opacity when a topic's row is being hovered over. */
+table.ipb_table tr:hover img[src="http://www.rllmukforum.com/public/style_images/master/icon_tag.png"] { opacity: 1; }
+
+/* Whitespace */
+.topic_controls + br { display: none; }
+
+/* --------------------------------------------------------------- Topics --- */
+
+/* remove author avatar from topic header */
+script + .ipsUserPhotoLink { display: none; }
+.ipsBox_withphoto { margin-left: 0 !important; }
+.ipsBox_withphoto br:last-child { display: none; }
+
+/* Make the username bar a bit smaller */
+.post_wrap > h3 { line-height: 28px !important; height: 28px !important; }
+
+/* Make avatars line up with usernames */
+.author_info { text-align: left !important; }
+
+/* Give post bodies a little bit more room */
+.post_wrap .author_info { width: 95px !important; }
+.post_wrap .post_body { margin-left: 125px !important; }
+
+/* Remove clutter from posts */
+li.post_count,
+li.group_title,
+li.report { display: none; }
+
+/* Move rep buttons into the "Posted" bar and dim them */
+.rep_bar { position: absolute; top: 34px; right: 7px; opacity: .3 }
+.rep_bar:hover { opacity: 1; }
+
+/* --------------------------------------------------------------- Footer --- *
+
+/* Remove avatar from the Fast Reply box */
+#fast_reply_wrapper .ipsUserPhotoLink { display: none; }
+
+/* Remove whitespace from Fast Reply box */
+#fast_reply_wrapper h1 + br { display: none; }
+
+/* Remove clutter from the footer */
+div.topic + br,
+ul.topic_share,
+#forum_footer + br { display: none; }
+#topic_stats { margin-top: 0 !important; }
+
+}
+
+/* ================================================ Page-Specific Changes === */
+
+/*
+Styles which are applied to pages which start with a specific URL - for tweaking
+layouts in ways which would break other pages if applied globally.
+*/
+
+/* ----------------------------------------------------- View New Content --- */
+
+@-moz-document url-prefix("http://www.rllmukforum.com/index.php?app=core&module=search&do=new_posts"),
+url-prefix("http://www.rllmukforum.com/index.php?app=core&module=search&do=viewNewContent") {
+
+/* Hide everything above the page numbers */
+.ipsType_pagetitle,
+.ipsType_pagedesc,
+.ipsType_pagedesc + br { display: none; }
+
+/* Hide left hand menu - disable and re-enable the style to change these */
+div.ipsLayout_left { display: none; }
+.ipsLayout.ipsLayout_withleft { padding-left: 0 !important; }
+
+/* Whitespace around bottom page numbers */
+#forum_table + br,
+.ipsLayout + br { display: none; }
+
+}
+
+/* ------------------------------------------------------- Topic Listings --- */
+
+@-moz-document url-prefix("http://www.rllmukforum.com/index.php?/forum") {
+
+/* Useless on this page */
+div.maintitle { display: none; }
+
+}
+
+/* --------------------------------------------------------------- Topics --- */
+
+@-moz-document url-prefix("http://www.rllmukforum.com/index.php?/topic") {
+
+/* Useless on this page */
+div.maintitle { display: none; }
+
+}
+
+/* -------------------------------------------------------- User Activity --- */
+
+@-moz-document url-prefix("http://www.rllmukforum.com/index.php?app=core&module=search&do=user_activity") {
+
+/* Hide the content type options. */
+.ipsSideMenu h4:first-child,
+.ipsSideMenu h4:first-child + ul { display: none; }
+.ipsSideMenu ul { margin-bottom: 0 !important; }
+
+}
